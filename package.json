@@ -1,0 +1,51 @@
+{
+  "name": "@uniformdev/optimize-starter-contentful-next",
+  "version": "12.2.0",
+  "private": true,
+  "license": "Apache-2.0",
+  "scripts": {
+    "dev": "run-s generate dev:next",
+    "dev:next": "next dev -p 4120",
+    "build": "run-s generate build:next",
+    "build:next": "next build",
+    "export": "next export",
+    "generate": "run-p generate:slug-page generate:intents",
+    "generate:intents": "uniform optimize manifest download --output ./lib/intentManifest.json",
+    "generate:slug-page": "node ./scripts/copySlugPage.js",
+    "start": "next start -p 4120",
+    "ci:build": "npm run generate && next build && next export",
+    "ci:build:ssr": "cross-env NEXT_USE_SSR=1 run-s generate build"
+  },
+  "dependencies": {
+    "@analytics/google-analytics": "0.5.3",
+    "@analytics/segment": "1.1.1",
+    "@contentful/rich-text-html-renderer": "15.4.0",
+    "@n8tb1t/use-scroll-position": "2.0.3",
+    "@uniformdev/optimize-tracker-analytics": "^12.2.0",
+    "@uniformdev/optimize-tracker-browser": "^12.2.0",
+    "@uniformdev/optimize-tracker-contentful": "^12.2.0",
+    "@uniformdev/optimize-tracker-react": "^12.2.0",
+    "@uniformdev/optimize-tracker-storage-indexeddb": "^12.2.0",
+    "analytics": "0.7.16",
+    "contentful": "9.1.3",
+    "next": "11.1.2",
+    "nookies": "2.5.2",
+    "react": "17.0.2",
+    "react-dom": "17.0.2"
+  },
+  "devDependencies": {
+    "@types/node": "16.7.1",
+    "@types/react": "17.0.30",
+    "@uniformdev/cli": "^12.2.0",
+    "autoprefixer": "10.3.7",
+    "cross-env": "7.0.3",
+    "dotenv": "10.0.0",
+    "node-fetch": "2.6.5",
+    "npm-run-all": "4.1.5",
+    "postcss": "8.3.9",
+    "postcss-preset-env": "6.7.0",
+    "prettier": "2.4.1",
+    "tailwindcss": "2.2.17",
+    "typescript": "4.4.4"
+  }
+}
